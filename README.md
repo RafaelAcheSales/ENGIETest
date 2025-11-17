@@ -44,3 +44,8 @@ curl.exe -X POST http://localhost:8888/productionplan -H "Content-Type: applicat
 
 
 The response contains a list of [`models.ProductionPlanItem`](app/models.py) objects describing the allocated production.
+
+## Testing
+
+- Run `pytest -q` from the repo root.
+- `app\test_main.py` posts `example_payloads/payload3.json` to the API and checks the reply against `example_payloads/response3.json`
