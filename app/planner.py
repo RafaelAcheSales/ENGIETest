@@ -72,6 +72,7 @@ class PlanAllocator:
 			# Determine how much this plant can contribute
 			possible_production = min(plant.pmax, remaining_load)
 			# Use pmin if possible production is less than pmin
+			# This could possibly be improved for more efficient allocation
 			plant.p = possible_production if possible_production >= plant.pmin else plant.pmin
 
 			allocated_load += plant.p
