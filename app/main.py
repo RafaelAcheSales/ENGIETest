@@ -1,5 +1,4 @@
 import logging
-from typing import List
 
 from fastapi import FastAPI, HTTPException
 
@@ -18,8 +17,8 @@ app = FastAPI(
 )
 
 
-@app.post("/productionplan", response_model=List[ProductionPlanItem])
-async def production_plan(payload: ProductionPlanRequest) -> List[ProductionPlanItem]:
+@app.post("/productionplan", response_model=list[ProductionPlanItem])
+async def production_plan(payload: ProductionPlanRequest) -> list[ProductionPlanItem]:
     """
     Calculate the optimal production plan given load, fuels and powerplants.
     """

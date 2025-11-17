@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 from enum import Enum
 from pydantic import BaseModel, Field
 
@@ -29,7 +29,7 @@ class PowerPlant(BaseModel):
 class ProductionPlanRequest(BaseModel):
     load: float
     fuels: Fuels
-    powerplants: List[PowerPlant]
+    powerplants: list[PowerPlant]
 
 
 class ProductionPlanItem(BaseModel):
