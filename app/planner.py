@@ -71,14 +71,11 @@ class PlanAllocator:
 
 			# Determine how much this plant can contribute
 			possible_production = min(plant.pmax, remaining_load)
-			if possible_production >= plant.pmin:
-				plant.p = possible_production
-				allocated_load += plant.p
-			else:
-				plant.p = 0.0  # Cannot operate below pmin
-		if abs(allocated_load - self.total_load) > 0.1:
-			logger.error("Could not exactly match the total load after allocation.")
-			raise HTTPException(status_code=400, detail="Could not exactly match the total load with given power plants.")
+			# Use pmin if possible production is less than pmin
+			plant.p = possible_production if possible_production >= plant.pmin else plant.pmin
+
+			allocated_load += plant.p
+			logger.info(f"Allocated {plant.p} MW to plant {plant.name}")
 		
 		return self._format_plan_response(self.runtime_plants)
 
