@@ -33,7 +33,14 @@ Send a `POST` request with a JSON payload matching [`models.ProductionPlanReques
 ```sh
 curl -X POST http://localhost:8888/productionplan \
      -H "Content-Type: application/json" \
-     -d @example_payloads/payload1.json
+     -d @example_payloads/payload3.json
 ```
+
+For Windows Powershell:
+
+```sh
+curl.exe -X POST http://localhost:8888/productionplan -H "Content-Type: application/json" -d "@example_payloads/payload3.json"
+```
+
 
 The response contains a list of [`models.ProductionPlanItem`](app/models.py) objects describing the allocated production.
