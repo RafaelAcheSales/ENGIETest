@@ -49,3 +49,19 @@ The response contains a list of [`models.ProductionPlanItem`](app/models.py) obj
 
 - Run `pytest -q` from the repo root.
 - `app\test_main.py` posts `example_payloads/payload3.json` to the API and checks the reply against `example_payloads/response3.json`
+
+## Docker
+
+Build the image:
+
+```sh
+docker build -t production-plan-api .
+```
+
+Run the container:
+
+```sh
+docker run --rm -p 8888:8888 production-plan-api
+```
+
+The container starts [`app.main.app`](app/main.py) with `uvicorn`.
