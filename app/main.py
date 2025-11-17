@@ -19,9 +19,7 @@ app = FastAPI(
 
 @app.post("/productionplan", response_model=list[ProductionPlanItem])
 async def production_plan(payload: ProductionPlanRequest) -> list[ProductionPlanItem]:
-    """
-    Calculate the optimal production plan given load, fuels and powerplants.
-    """
+    """ Calculate the optimal production plan given load, fuels and powerplants. """
     try:
         return build_production_plan(payload)
     except HTTPException:
